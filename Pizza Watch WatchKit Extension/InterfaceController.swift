@@ -12,11 +12,28 @@ import Foundation
 
 class InterfaceController: WKInterfaceController {
 
-    override func awake(withContext context: Any?) {
-        super.awake(withContext: context)
-        
-        // Configure interface objects here.
+    var tamanoEscogido:String = ""
+    
+    @IBAction func chicaBoton() {
+        tamanoEscogido = "Chica"
+        botonTamano()
     }
+
+    @IBAction func medianaBoton() {
+        tamanoEscogido = "Mediana"
+        botonTamano()
+    }
+    
+    @IBAction func grandeBoton() {
+        tamanoEscogido = "Grande"
+        botonTamano()
+    }
+    
+    @IBAction func botonTamano() {
+        let res = Resultados(tamano: tamanoEscogido, masa: "", queso: "", ingrediente1: "", ingrediente2: "", ingrediente3: "", ingrediente4: "", ingrediente5: "")
+        pushController(withName: "tamanoElegido", context: res)
+    }
+    
     
     override func willActivate() {
         // This method is called when watch view controller is about to be visible to user
